@@ -1,3 +1,9 @@
+    <?php 
+
+        // Includi il file functions.php
+        include 'functions.php';
+
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +16,6 @@
 </head>
 
 <body >
-
     <header>
         <div class="container text-center">
             <div class="row">
@@ -25,8 +30,12 @@
         <div class="container">
             <div class="col-12">
                 <div class="container-fluid bg-info-subtle">
-                    <div class="p-3">
-                        Nessun parametro valido
+                    <div class="p-3 h-75 d-flex justify-content-center ">
+                        <?php 
+                            // if(isset($_GET["length"])){
+                            // echo passwordGenerate($_GET["length"]);
+                            // }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -35,11 +44,13 @@
             <div class="col-12">
                 <div class="container-fluid bg-white p-3">
                     <div class="d-flex flex-column">
-                        <form action="formAsk.php" method="get">
-                                <label for="">Lunghezza password:</label>
-                                <input type="text" name="passLength">
+                        <form action="sessionPasw.php" method="get">
+                            <label for="">Lunghezza password:</label>
+                            <input autocomplete="off" min="6" max="20" type="number" name="length">
+                            <button type="submit" class="btn btn-primary mt-5">Invia</button>
+
                         </form>
-                        <form class="mt-4" action="formAsk.php" method="get">
+                        <!-- <form class="mt-4" action="formAsk.php" method="get">
                             <div class="d-flex">
                                 <label for="">Consenti ripetizioni di uno o piu caratteri:</label>
                                 <div class="d-flex flex-column ms-5">
@@ -57,9 +68,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary mt-5">Invia</button>
                             <button type="submit" class="btn btn-secondary mt-5">Annulla</button>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
