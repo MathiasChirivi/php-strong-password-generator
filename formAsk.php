@@ -60,12 +60,13 @@
                                     <label for="">Lunghezza password:</label>
                                 </div>
                                 <div class="inputLenght">
-                                    <input class="widthInput" style="width: 300px;" autocomplete="off" min="6" max="20" type="number" name="length" >
+                                    <input class="widthInput" autocomplete="off" min="6" max="20" type="number" name="length" >
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-around me-5 mt-3">
+                            <div class="d-flex justify-content-around mt-4">
                                 <label for="">Consenti ripetizioni di uno o piu caratteri:</label>
-                                <div class="d-flex flex-column">
+                                <div class="d-flex flex-column ms-5">
+                                <div class="d-flex flex-column ">
                                     <div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -74,15 +75,24 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                            <label class="form-check-label" for="flexRadioDefault2">
-                                                no
-                                            </label>
-                                        </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">
+                                            no
+                                        </label>
                                     </div>
+                                    <div class="mt-3 d-flex flex-column">
+                                        <label>
+                                            <input type="checkbox" name="useNumbers" value="1"> Utilizza numeri
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="useLetters" value="1"> Utilizza lettere
+                                        </label>
+                                        <label>
+                                            <input type="checkbox" name="useSymbols" value="1"> Utilizza simboli
+                                        </label>
                                     </div>
+                                </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mt-5">Invia</button>
