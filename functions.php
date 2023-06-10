@@ -3,20 +3,14 @@
 $length = $_GET['length'];
 
     function passwordGenerate($length){
-
+        $passwordLength = ""; 
         $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz$%&/_()';
         if($length <= 0) {
-            return 'Nessun parametro valido inserito';
+            $passwordLength = 'Nessun parametro valido inserito';
         } else {
-            return substr(str_shuffle($data), 0, $length);
+            $passwordLength = substr(str_shuffle($data), 0, $length);
         }
 
-        $_SESSION['pagePassword'] = $length;
-
-        if ($length)  {
-            header('Location: sessionPasw.php');
-        } else {
-            echo 'Compila il form';
-        }
+        return $passwordLength;
     }
     ?>

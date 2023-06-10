@@ -3,6 +3,15 @@
         // Includi il file functions.php
         include 'functions.php';
 
+        if(!empty($_GET['length'])){
+            $passwordAsk = passwordGenerate($_GET['length']);
+            if($passwordAsk){
+                session_start();
+                $_SESSION['length'] = $passwordAsk;
+                header('Location: ./sessionPasw.php');
+            }
+        }
+
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>php-strong-password-generator</title>
     <!-- add bootstrap -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,11 +40,12 @@
             <div class="col-12">
                 <div class="container-fluid bg-info-subtle">
                     <div class="p-3 h-75 d-flex justify-content-center ">
-                        <?php 
-                            // if(isset($_GET["length"])){
-                            // echo passwordGenerate($_GET["length"]);
-                            // }
-                        ?>
+                        Nessun Parametro valido inserito
+                        <!-- <?php 
+                            if(isset($_GET["length"])){
+                            echo passwordGenerate($_GET["length"]);
+                            }
+                        ?> -->
                     </div>
                 </div>
             </div>
@@ -44,32 +54,40 @@
             <div class="col-12">
                 <div class="container-fluid bg-white p-3">
                     <div class="d-flex flex-column">
-                        <form action="sessionPasw.php" method="get">
-                            <label for="">Lunghezza password:</label>
-                            <input autocomplete="off" min="6" max="20" type="number" name="length">
-                            <button type="submit" class="btn btn-primary mt-5">Invia</button>
-
-                        </form>
-                        <!-- <form class="mt-4" action="formAsk.php" method="get">
-                            <div class="d-flex">
+                        <form action="formAsk.php" method="get">
+                            <div class="d-flex justify-content-around">
+                                <div>
+                                    <label for="">Lunghezza password:</label>
+                                </div>
+                                <div class="inputLenght">
+                                    <input class="widthInput" style="width: 300px;" autocomplete="off" min="6" max="20" type="number" name="length" >
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-around me-5 mt-3">
                                 <label for="">Consenti ripetizioni di uno o piu caratteri:</label>
-                                <div class="d-flex flex-column ms-5">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            si
-                                        </label>
+                                <div class="d-flex flex-column">
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                si
+                                            </label>
+                                        </div>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            no
-                                        </label>
+                                    <div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                            <label class="form-check-label" for="flexRadioDefault2">
+                                                no
+                                            </label>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
+                            <button type="submit" class="btn btn-primary mt-5">Invia</button>
                             <button type="submit" class="btn btn-secondary mt-5">Annulla</button>
-                        </form> -->
+                        </form>
                     </div>
                 </div>
             </div>
