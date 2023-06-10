@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-primary mt-5">Invia</button>
-                            <button type="submit" class="btn btn-secondary mt-5">Annulla</button>
+                            <button type="reset" class="btn btn-secondary mt-5">Annulla</button>
                         </form>
                     </div>
                 </div>
