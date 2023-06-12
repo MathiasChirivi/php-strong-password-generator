@@ -1,7 +1,4 @@
     <?php 
-
-        include 'functions.php';
-        
         session_start();
 
         // var_dump($_SESSION['length']);
@@ -34,7 +31,7 @@
                     <div class="p-3 h-75 d-flex justify-content-center align-items-center ">
                             <strong class="m-0 me-1">La tua password é:</strong>
                             <!--Genera la password casuale -->
-                            <?php echo $_SESSION['length']  ?>
+                            <?php echo $_SESSION['password'] ?>
                     </div>
                 </div>
                 <a class="d-flex align-items-center" href="./formAsk.php">Torna alla home</a>
@@ -42,7 +39,5 @@
         </div>
     </main>
 
-    <?php session_unset(); ?>
-    <?php session_destroy(); ?>
 </body>
 </html>

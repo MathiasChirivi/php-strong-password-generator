@@ -1,16 +1,41 @@
 <?php 
 
-$length = $_GET['length'];
+function passwordGenerate($length, $repetition, $useNumbers, $useLetters, $useSymbols) {
+    $result = "";
 
-    function passwordGenerate($length){
-        $passwordLength = ""; 
-        $data = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz$%&/_()';
-        if($length <= 0) {
-            $passwordLength = 'Nessun parametro valido inserito';
-        } else {
-            $passwordLength = substr(str_shuffle($data), 0, $length);
-        }
+    $letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $numbers = "0123456789";
+    $symbols = "!?&%$<>^+-*/()[]{}@#_=";
 
-        return $passwordLength;
+    $typeCharacters = "";
+
+    if($useLetters) {
+        $typeCharacters .= $letters;
+    } else if($useNumbers) {
+        $typeCharacters .= $numbers;
+    } else if($useSymbols) {
+        $typeCharacters .= $symbols;
+    } else if ($typeCharacters == "") {
+        $typeCharacters = $letters . $numbers . $symbols;
     }
+
+    $charNumber = strlen($typeCharacters);
+
+    if($charNumber < $length) {
+        $length = $charNumber;
+    }
+
+    while(strlen($result) < $length) {
+        $randoNum = rand(0, $charNumber-1 );
+        $currentChar = $typeCharacters[$randoNum];
+        
+        if( $repetition || !str_contains($result, $currentChar) ) {
+            $result .= $currentChar;
+        }
+    }
+
+    return htmlspecialchars($result);
+}
+
+?>
     ?>

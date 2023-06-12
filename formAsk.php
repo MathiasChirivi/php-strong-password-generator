@@ -3,13 +3,19 @@
         // Includi il file functions.php
         include 'functions.php';
 
-        if(!empty($_GET['length'])){
-            $passwordAsk = passwordGenerate($_GET['length']);
-            if($passwordAsk){
-                session_start();
-                $_SESSION['length'] = $passwordAsk;
-                header('Location: ./sessionPasw.php');
-            }
+        if (isset($_GET["length"])) {
+            $pwdLength = $_GET["length"];
+            $repetition = $_GET["repetition"];
+        
+            $useNumbers = $_GET["useNumbers"];
+            $useLetters = $_GET["useLetters"];
+            $useSymbols = $_GET["useSymbols"];
+
+            $result = passwordGenerate($pwdLength, $repetition, $useNumbers, $useLetters, $useSymbols);
+        
+            session_start();
+            $_SESSION["password"] = $result;
+            header("Location: ./sessionPasw.php");
         }
 
     ?>
@@ -39,13 +45,8 @@
         <div class="container">
             <div class="col-12">
                 <div class="container-fluid bg-info-subtle">
-                    <div class="p-3 h-75 d-flex justify-content-center ">
-                        Nessun Parametro valido inserito
-                        <!-- <?php 
-                            if(isset($_GET["length"])){
-                            echo passwordGenerate($_GET["length"]);
-                            }
-                        ?> -->
+                    <div class="p-3 d-flex justify-content-center ">
+                     Nessun Parametro valido inserito 
                     </div>
                 </div>
             </div>
@@ -68,18 +69,12 @@
                                 <div class="d-flex flex-column ms-5">
                                 <div class="d-flex flex-column ">
                                     <div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
-                                                si
-                                            </label>
-                                        </div>
-                                    </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            no
-                                        </label>
+                                        <select name="repetition" class="form-select" aria-label="Seleziona se sarà possibile utilizzare più volte un carattere">
+                                            <option selected value="1">Si</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
                                     </div>
                                     <div class="mt-3 d-flex flex-column">
                                         <label>
